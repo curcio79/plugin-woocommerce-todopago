@@ -1,13 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+$urlPath = dirname( plugins_url().'/'.plugin_basename( __FILE__ ) ).'/';
 
-//var_dump("Url del formulario: ".$url_form);
 
 ?>
-<link href="<?php echo "$form_dir/flexbox.css"; ?>" rel="stylesheet" type="text/css">
-<link href="<?php echo "$form_dir/form_todopago.css"; ?>" rel="stylesheet" type="text/css">
-<link href="<?php echo "$form_dir/queries.css"; ?>" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
+<link href="<?php echo $urlPath.'/flexbox.css'; ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo $urlPath.'/form_todopago.css'; ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo $urlPath.'/queries.css'; ?>" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="<?php echo $urlPath.'/script-min.js'; ?>"></script>
 
 
 <div class="progress">
@@ -311,4 +311,4 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 
 </script>
-<script type="text/javascript" src="<?php echo "$form_dir/code-min.js"; ?>"></script>
+<script type="text/javascript" src="<?php echo "$urlPath/code-min.js"; ?>"></script>

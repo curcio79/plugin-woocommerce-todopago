@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 define( 'TODOPAGO_PLUGIN_VERSION', '1.14.0' );
-define( 'TP_FORM_EXTERNO', 'externo' );
-define( 'TP_FORM_HIBRIDO', 'hibrido' );
+define( 'TPMP_Billetera_Gateway', 'externo' );
+define( 'TPMP_Billetera_Gateway', 'hibrido' );
 
 //use TodoPago\Sdk as Sdk;
 
@@ -141,7 +141,7 @@ function woocommerce_todopago_init() {
 
 			$tp_plugin_base_dir = $this->get_tp_name();
 
-			$urlPath = "wp-content/plugins/{$tp_plugin_base_dir}/";
+			$urlPath = plugins_url()."/{$tp_plugin_base_dir}/";
 
 			$this->tpLogger = new TodoPagoLogger();
 
@@ -272,7 +272,7 @@ function woocommerce_todopago_init() {
 			global $woocommerce;
 			$order_id = $woocommerce->session->__get( 'order_awaiting_payment' );
 			if ( $order_id === null ) {
-				$order_key = $_GET['key'];
+				$order_key = sanitize_text_field($_GET['key']);
 				$order_id  = wc_get_order_id_by_order_key( $order_key );
 			}
 			$order = new WC_Order( $order_id );

@@ -15,8 +15,8 @@ use TodoPago\Exception\Data\EmptyFieldException;
 
 
 //print_r($_POST);
-$mail = filter_var( sanitize_text_field($_REQUEST['mail']), FILTER_SANITIZE_EMAIL);
-$pass = filter_var( sanitize_text_field($_REQUEST['pass']), FILTER_SANITIZE_STRING); 
+$mail = filter_var( sanitize_email($_REQUEST['mail']), FILTER_SANITIZE_EMAIL);
+$pass = filter_var( $_REQUEST['pass']); 
 $mode = filter_var( sanitize_text_field($_REQUEST['mode']), FILTER_SANITIZE_STRING);
 
 $userArray = array(

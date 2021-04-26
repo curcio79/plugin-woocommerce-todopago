@@ -263,7 +263,7 @@ class Core {
 		$arr_url               = explode( '?', $this->wp_get_request_uri() );
 		$_REQUEST['ref_total'] = $ref_total;
 
-		return add_query_arg( $_REQUEST, $arr_url[0] );
+		return add_query_arg( $_REQUEST, sanitize_text_field($arr_url[0]) );
 	}
 
 	/* FIRST STEP */
@@ -510,7 +510,7 @@ class Core {
 			'Security'   => $this->getMerchant()->getApiKey(),
 			'Merchant'   => $this->getMerchant()->getMerchantId(),
 			'RequestKey' => $response_SAR["RequestKey"],
-			'AnswerKey'  => $_GET['Answer']
+			'AnswerKey'  => sanitize_text_field($_GET['Answer'])
 		);
 
 		$response_GAA = $this->getSdk()->getAuthorizeAnswer( $params_GAA );
