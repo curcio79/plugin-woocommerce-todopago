@@ -177,7 +177,7 @@ function woocommerce_todopago_init() {
 		}
 
 		function load_admin_style() {
-			wp_enqueue_style( 'style', "/wp-content/plugins/{$this->get_tp_name()}/css/admin-style.css", false, '1.0.0' );
+			wp_enqueue_style( 'style', plugins_url()."/{$this->get_tp_name()}/css/admin-style.css", false, '1.0.0' );
 		}
 
 		public function get_tp_name() {
