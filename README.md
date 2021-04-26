@@ -1,6 +1,6 @@
 <a name="inicio"></a>
 # Todo Pago - Módulo para WooCommerce
-### Versión 1.12.0
+### Versión 1.14.0
 
 Plug in para la integración con gateway de pago <strong>Todo Pago</strong>
 + [Consideraciones Generales](#consideracionesgenerales)
