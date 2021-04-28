@@ -33,6 +33,7 @@ use TodoPago\lib\TodopagoSettings;
 add_action( 'plugins_loaded', 'woocommerce_todopago_init', 0 );
 
 
+
 function woocommerce_todopago_init() {
 
 	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
@@ -177,7 +178,7 @@ function woocommerce_todopago_init() {
 		}
 
 		function load_admin_style() {
-			wp_enqueue_style( 'style', plugins_url()."/{$this->get_tp_name()}/css/admin-style.css", false, '1.0.0' );
+			wp_enqueue_style( 'style', plugins_url()."{$this->get_tp_name()}/css/admin-style.css", false, '1.0.0' );
 		}
 
 		public function get_tp_name() {

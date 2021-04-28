@@ -2,13 +2,18 @@
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 $urlPath = dirname( plugins_url().'/'.plugin_basename( __FILE__ ) ).'/';
 
+wp_register_style('TPMP-flexbox', $urlPath.'/flexbox.css', array(), false, 'screen');
+wp_register_style('TPMP-form_todopago', $urlPath.'/form_todopago.css', array(), false, 'screen');
+wp_register_style('TPMP-queries', $urlPath.'/queries.css', array(), false, 'screen');
+    
+wp_enqueue_script( 'TPMP-code-min', $urlPath . 'code-min.js', array(), '1.0.0', true );
+wp_enqueue_style('TPMP-flexbox');
+wp_enqueue_style('TPMP-form_todopago');
+wp_enqueue_style('TPMP-queries');
+
 
 ?>
-<link href="<?php echo $urlPath.'/flexbox.css'; ?>" rel="stylesheet" type="text/css">
-<link href="<?php echo $urlPath.'/form_todopago.css'; ?>" rel="stylesheet" type="text/css">
-<link href="<?php echo $urlPath.'/queries.css'; ?>" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="<?php echo $urlPath.'/script-min.js'; ?>"></script>
-
+<script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
 
 <div class="progress">
     <div class="progress-bar progress-bar-striped active" id="loading-hibrid">
@@ -311,4 +316,3 @@ $urlPath = dirname( plugins_url().'/'.plugin_basename( __FILE__ ) ).'/';
 
 
 </script>
-<script type="text/javascript" src="<?php echo "$urlPath/code-min.js"; ?>"></script>
