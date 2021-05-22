@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 define( 'TODOPAGO_PLUGIN_VERSION', '1.14.0' );
-define( 'TPMP_Billetera_Gateway', 'externo' );
-define( 'TPMP_Billetera_Gateway', 'hibrido' );
+define( 'TPMP_FORM_EXTERNO', 'externo' );
+define( 'TPMP_FORM_HIBRIDO', 'hibrido' );
 
 //use TodoPago\Sdk as Sdk;
 
