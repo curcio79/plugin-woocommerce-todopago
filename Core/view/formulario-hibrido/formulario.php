@@ -25,12 +25,12 @@ wp_enqueue_style('TPMP-queries');
         <div>
             <strong>Total a pagar $<?php echo $amount; ?></strong>
         </div>
-        <div>
+        <!-- <div>
             Elegí tu forma de pago
-        </div>
+        </div> -->
     </section>
 
-    <section class="billetera_virtual_tp tp-flex tp-flex-responsible">
+    <!-- <section class="billetera_virtual_tp tp-flex tp-flex-responsible" style='display:none'>
         <div class="tp-flex-grow-1 tp-bloque-span texto_ccbilletera_virtual text_size_billetera">
             <p>Pagá con tu <strong>Billetera Virtual Todo Pago</strong></p>
             <p>y evitá cargar los datos de tu tarjeta</p>
@@ -40,7 +40,7 @@ wp_enqueue_style('TPMP-queries');
                 Iniciar Sesión
             </button>
         </div>
-    </section>
+    </section> -->
 
     <section class="billeterafm_tp">
         <div class="field field-payment-method">
