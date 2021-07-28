@@ -80,6 +80,8 @@ function woocommerce_todopago_init() {
 			$this->version           = $this->todopago_getValueOfArray( $this->settings, 'version' );
 			$this->title             = "Todo Pago";
 			$this->description       = Constantes::TODOPAGO_DESCRIPCION_TODOPAGO;
+			$this->method_description       = Constantes::TODOPAGO_DESCRIPCION_TODOPAGO;
+
 			$this->ambiente          = $this->todopago_getValueOfArray( $this->settings, 'ambiente' );
 			$this->clean_carrito     = $this->todopago_getValueOfArray( $this->settings, 'clean_carrito' );
 			$this->tipo_segmento     = $this->todopago_getValueOfArray( $this->settings, 'tipo_segmento' );

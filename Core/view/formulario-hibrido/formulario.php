@@ -11,9 +11,14 @@ wp_enqueue_style('TPMP-flexbox');
 wp_enqueue_style('TPMP-form_todopago');
 wp_enqueue_style('TPMP-queries');
 
-
+add_action( 'woocommerce_after_checkout_form', 'bbloomer_add_jscript_checkout');
+ 
+function bbloomer_add_jscript_checkout() {
+echo '<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>zz';
+}
 ?>
 <script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
+
 
 <div class="progress">
     <div class="progress-bar progress-bar-striped active" id="loading-hibrid">
@@ -30,17 +35,17 @@ wp_enqueue_style('TPMP-queries');
         </div> -->
     </section>
 
-    <!-- <section class="billetera_virtual_tp tp-flex tp-flex-responsible" style='display:none'>
+     <section class="billetera_virtual_tp tp-flex tp-flex-responsible" style='display:none'>
         <div class="tp-flex-grow-1 tp-bloque-span texto_ccbilletera_virtual text_size_billetera">
-            <p>Pagá con tu <strong>Billetera Virtual Todo Pago</strong></p>
-            <p>y evitá cargar los datos de tu tarjeta</p>
+            <!-- <p>Pagá con tu <strong>Billetera Virtual Todo Pago</strong></p>
+            <p>y evitá cargar los datos de tu tarjeta</p> -->
         </div>
         <div class="tp-flex-grow-1 tp-bloque-span">
-            <button id="btn_billetera" title="Iniciar Sesión" class="tp_btn tp_btn_sm text_size_billetera">
+            <button id="btn_billetera" title="Iniciar Sesión" class="tp_btn tp_btn_sm text_size_billetera" style="display:none">
                 Iniciar Sesión
             </button>
         </div>
-    </section> -->
+    </section>
 
     <section class="billeterafm_tp">
         <div class="field field-payment-method">
