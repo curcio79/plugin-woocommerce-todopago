@@ -14,7 +14,7 @@ wp_enqueue_style('TPMP-queries');
 add_action( 'woocommerce_after_checkout_form', 'bbloomer_add_jscript_checkout');
  
 function bbloomer_add_jscript_checkout() {
-echo '<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>zz';
+echo '<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>';
 }
 ?>
 <script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
