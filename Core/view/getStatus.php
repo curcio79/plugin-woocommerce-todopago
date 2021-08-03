@@ -106,5 +106,5 @@ h2 {
     <img src="images/logo.png" alt="Todopago"/<br>
     <h2>Estado de la operacion</h2>
     <div class="separador"></div>
-	<?php echo $rta; ?>
+	<?php echo esc_html($rta); ?>
 </div>

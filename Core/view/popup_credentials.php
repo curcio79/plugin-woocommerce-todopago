@@ -7,7 +7,7 @@ $mode = sanitize_text_field($_REQUEST['mode']);
 
 <div id="credentials-login" class="gateway_settings_form" >
 	<form method="POST" action="credentials.php">
-		<input type="hidden" name="mode" value="<?php echo $mode; ?>">
+		<input type="hidden" name="mode" value="<?php echo esc_html($mode); ?>">
 		<img src="images/logo.png">
 		<p>Ingresa con tus credenciales para Obtener los datos de configuraci&oacute;n</p>    
 		<table class="form-table">

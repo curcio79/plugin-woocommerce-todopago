@@ -254,7 +254,7 @@ class TransactionModel extends AbstractModel
         $paramsBenchmark->CSITUNITPRICE = '1254.40'; //Formato IDEM CSTITOTALAMOUNT
         foreach ($paramsBenchmark as $propiedad => $valor) {
             if (!property_exists($operacion, $propiedad)) {
-                echo "\nPropo: $propiedad";
+                //echo "\nPropo: $propiedad";
                 $operacion->{$propiedad} = $this->getCustomValidator()->validateEmpty($propiedad, 'OPERACION');
             }
         }

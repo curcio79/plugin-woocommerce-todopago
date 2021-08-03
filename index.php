@@ -260,13 +260,22 @@ function woocommerce_todopago_init() {
 			echo '</table><br>';
 
 			$urlCredentials = plugins_url( 'js/credentials.js', __FILE__ );
-			echo '<script type="text/javascript" src="' . $urlCredentials . '"></script>';
+
+			//echo '<script type="text/javascript" src="' . $urlCredentials . '"></script>';
+			wp_enqueue_script( 'TPMP-urlCredentials', $urlCredentials, array(), '1.0.0', true );
+
 
 			$plugin_config = plugins_url( 'js/plugin_config.js', __FILE__ );
-			echo '<script type="text/javascript" src="' . $plugin_config . '"></script>';
+
+			//echo '<script type="text/javascript" src="' . $plugin_config . '"></script>';
+			wp_enqueue_script( 'TPMP-plugin_config', $plugin_config, array(), '1.0.0', true );
+
 
 			$urlCredentialsPhp = wp_nonce_url( plugins_url( 'view/credentials.php', __FILE__ ), "todopago_getcredentials_config_form" );
-			echo '<script type="text/javascript">var BASE_URL_CREDENTIAL = "' . $urlCredentialsPhp . '";</script>';
+
+			//echo '<script type="text/javascript">var BASE_URL_CREDENTIAL = "' . $urlCredentialsPhp . '";</script>';
+			wp_enqueue_script( 'TPMP-urlCredentialsPhp', $urlCredentialsPhp, array(), '1.0.0', true );
+
 			echo '<style>.wp-admin select{height: 35px !important}</style>';
 		}
 

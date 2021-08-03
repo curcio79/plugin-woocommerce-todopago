@@ -147,7 +147,7 @@ class TransactionDAO extends AbstractDAO
                 $values["returned_key"] = $response->AuthorizationKey;
             }
         } catch (Exception $e) {
-            echo "Error al guardar en la BBDD" . $e->getMessage();
+            //echo wp_kses("Error al guardar en la BBDD" . $e->getMessage()) ;
         }
 
 
