@@ -1,6 +1,13 @@
 <?php
+
+
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 $urlPath = dirname( plugins_url().'/'.plugin_basename( __FILE__ ) ).'/';
+
+
+ 
+//$scripts->add( 'script-min', false, array( $urlPath . 'script-min.js' ) );
+
 
 wp_register_style('TPMP-flexbox', $urlPath.'/flexbox.css', array(), false, 'screen');
 wp_register_style('TPMP-form_todopago', $urlPath.'/form_todopago.css', array(), false, 'screen');
@@ -11,13 +18,17 @@ wp_enqueue_style('TPMP-flexbox');
 wp_enqueue_style('TPMP-form_todopago');
 wp_enqueue_style('TPMP-queries');
 
-add_action( 'woocommerce_after_checkout_form', 'bbloomer_add_jscript_checkout');
+
+
+
+
+//add_action( 'woocommerce_after_checkout_form', 'bbloomer_add_jscript_checkout');
  
-function bbloomer_add_jscript_checkout() {
-echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>');
-}
+// function bbloomer_add_jscript_checkout() {
+// echo '<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>';
+// }
+echo '<script type="text/javascript" src="'.$urlPath.'/script-min.js"></script>';
 ?>
-<script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
 
 
 <div class="progress">
