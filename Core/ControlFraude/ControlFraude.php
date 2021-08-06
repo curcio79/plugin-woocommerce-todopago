@@ -39,6 +39,20 @@ abstract class ControlFraude
         $payDataOperacion['CSBTCOUNTRY'] = $this->order->getAddressBilling()->getCountry();
         $payDataOperacion['CSBTCUSTOMERID'] = $this->customer->getId();
         $payDataOperacion['CSBTIPADDRESS'] = ($this->customer->getIpAddress() == '::1' || $this->customer->getIpAddress() == '') ? '127.0.0.1' : $this->customer->getIpAddress();
+
+        $ipv4=$payDataOperacion['CSBTIPADDRESS'];
+        if(!ip2long($ipv4))
+
+        {
+
+        $ipv4 = hexdec(substr($ipv4, 0, 2)). "." . hexdec(substr($ipv4, 2, 2)). "." . hexdec(substr($ipv4, 5, 2)). "." . hexdec(substr($ipv4, 7, 2));
+
+        //reemplaza el valor de la variable de IPV6 a IPV4
+
+        $payDataOperacion['CSBTIPADDRESS'] =$ipv4;
+
+        }
+
         $payDataOperacion['CSBTEMAIL'] = $this->order->getCustomerBilling()->getUserEmail();
         $payDataOperacion['CSBTFIRSTNAME'] = $this->order->getCustomerBilling()->getFirstName();
         $payDataOperacion['CSBTLASTNAME'] = $this->order->getCustomerBilling()->getLastName();
