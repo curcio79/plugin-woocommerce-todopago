@@ -40,10 +40,10 @@ function woocommerce_todopago_init() {
 		return;
 	}
 
-	if ( isset( sanitize_text_field($_GET["TodoPago_redirect"]) ) && sanitize_text_field($_GET["TodoPago_redirect"]) == "true" && isset( sanitize_text_field($_GET["order"]) ) ) {
-		$row          = get_post_meta( sanitize_text_field($_GET["order"]), 'response_SAR', true );
+	if ( isset( $_GET["TodoPago_redirect"] ) && $_GET["TodoPago_redirect"] == "true" && isset( $_GET["order"] ) ) {
+		$row          = get_post_meta( $_GET["order"], 'response_SAR', true );
 		$response_SAR = unserialize( $row );
-		if ( sanitize_text_field($_GET["form"]) == "ext" ) {
+		if ( $_GET["form"] == "ext" ) {
 			header( 'Location: ' . $response_SAR["URL_Request"] );
 			exit;
 		} else {
@@ -288,7 +288,7 @@ function woocommerce_todopago_init() {
 			if ( $this->id !== $this->getOrderLegacy( $order, 'payment_method' ) ) {
 				return true;
 			}
-			if ( isset( sanitize_text_field($_GET["second_step"]) ) ) {
+			if ( isset( $_GET["second_step"] ) ) {
 				//Second Step
 				$this->second_step_todopago();
 			} else {
@@ -317,8 +317,8 @@ function woocommerce_todopago_init() {
 					}
 					$orderDTO = new \TodoPago\Core\Order\OrderDTO();
 					$orderDTO->setOrderId( $order_id );
-					if ( isset( sanitize_text_field($_GET['key']) ) ) {
-						$orderDTO->setOrderKey( sanitize_text_field($_GET['key']) );
+					if ( isset( $_GET['key'] ) ) {
+						$orderDTO->setOrderKey( $_GET['key'] );
 					}
 					$customerUser = method_exists( $order, 'get_customer_user_agent' ) ? $order->get_customer_user_agent() : $order->customer_user;
 					$logger       = $this->_obtain_logger( phpversion(), $woocommerce->version, TODOPAGO_PLUGIN_VERSION, $this->ambiente, $customerUser != null ? $customerUser : "guest", $order_id, true );
@@ -471,7 +471,7 @@ function woocommerce_todopago_init() {
 			$order_id = $woocommerce->session->__get( 'order_awaiting_payment' );
 
 			if ( $order_id === null ) {
-				$order_key = sanitize_text_field($_GET['key']);
+				$order_key = $_GET['key'];
 				$order_id  = wc_get_order_id_by_order_key( $order_key );
 			}
 
@@ -576,10 +576,10 @@ function woocommerce_todopago_init() {
 		//Se ejecuta luego de pagar con el formulario
 		function second_step_todopago() {
 			global $woocommerce;
-			if ( ! ( key_exists( 'tp_order', $_GET ) && isset( sanitize_text_field($_GET['tp_order']) ) ) && ! ( isset( sanitize_text_field($_GET['key']) ) || isset( sanitize_text_field($_GET['order']) ) ) ) {
+			if ( ! ( key_exists( 'tp_order', $_GET ) && isset( $_GET['tp_order'] ) ) && ! ( isset( $_GET['key'] ) || isset( $_GET['order'] ) ) ) {
 				return true;
 			}
-			$order_id      = isset( sanitize_text_field($_GET['tp_order']) ) ? intval( sanitize_text_field($_GET['tp_order']) ) : $order_id = wc_get_order_id_by_order_key( sanitize_text_field($_GET['key']) );
+			$order_id      = isset( $_GET['tp_order'] ) ? intval( $_GET['tp_order'] ) : $order_id = wc_get_order_id_by_order_key( $_GET['key'] );
 			$order         = new WC_Order( $order_id );
 			$paymentMethod = $this->getOrderLegacy( $order, 'payment_method' );
 
@@ -593,18 +593,18 @@ function woocommerce_todopago_init() {
 			$customerUser = method_exists( $order, 'get_customer_user_agent' ) ? $order->get_customer_user_agent() : $order->customer_user;
 			$logger       = $this->_obtain_logger( phpversion(), $woocommerce->version, TODOPAGO_PLUGIN_VERSION, $this->ambiente, $customerUser != null ? $customerUser : "guest", $order_id, true );
 			$this->core->setTpLogger( $logger );
-			if ( isset( sanitize_text_field($_GET['timeout']) ) && sanitize_text_field($_GET['timeout']) == "expired" ) {
+			if ( isset( $_GET['timeout'] ) && $_GET['timeout'] == "expired" ) {
 				$this->setOrderStatus( $order, 'estado_rechazo' );
 				//$this -> _printErrorMsg();
-				$redirect_url = add_query_arg( 'wc_error', urlencode( sanitize_text_field($_GET['error_message']) ), $order->get_cancel_order_url_raw() );
+				$redirect_url = add_query_arg( 'wc_error', urlencode( $_GET['error_message'] ), $order->get_cancel_order_url_raw() );
 				$this->clean_cart( $woocommerce, $this->clean_carrito );
 				wp_redirect( $redirect_url );
 				exit;
 			}
-			if ( isset( sanitize_text_field($_GET['Error']) ) ) {
+			if ( isset( $_GET['Error'] ) ) {
 				$this->setOrderStatus( $order, 'estado_rechazo' );
 				//$this -> _printErrorMsg();
-				$redirect_url = add_query_arg( 'wc_error', urlencode( sanitize_text_field($_GET['Error']) ), $order->get_cancel_order_url_raw() );
+				$redirect_url = add_query_arg( 'wc_error', urlencode( $_GET['Error'] ), $order->get_cancel_order_url_raw() );
 				$this->clean_cart( $woocommerce, $this->clean_carrito );
 				wp_redirect( $redirect_url );
 				exit;
@@ -612,7 +612,7 @@ function woocommerce_todopago_init() {
 			$data_GAA = $this->core->call_gaa( $order_id );
 
 			////////////////////////////////////////////////////////////////////
-			$key            = sanitize_text_field($_GET['key']);
+			$key            = $_GET['key'];
 			$post_id        = get_post_id_by_key( $key );
 			$costo_subtotal = $order->get_total();
 			$costo_total    = $data_GAA["response_GAA"]["Payload"]["Request"]["AMOUNTBUYER"];
@@ -674,7 +674,7 @@ function woocommerce_todopago_init() {
 			global $woocommerce;
 			$order = new WC_Order( $order_id );
 
-			if ( isset( $_GET["pay_for_order"] ) && sanitize_text_field($_GET["pay_for_order"]) == true ) {
+			if ( isset( $_GET["pay_for_order"] ) && $_GET["pay_for_order"] == true ) {
 
 				$result = array(
 					'result'   => 'success',
@@ -740,9 +740,9 @@ function woocommerce_todopago_init() {
 			$woocommerce->cart->empty_cart();
 			if ( $condition != 1 ) {
 				if ( isset( $_GET['tp_order'] ) || isset( $_GET['key'] ) ) {
-					$order_id = intval( sanitize_text_field($_GET['tp_order']) );
+					$order_id = intval( $_GET['tp_order'] );
 					if ( ! isset( $_GET['tp_order'] ) ) {
-						$order_id = wc_get_order_id_by_order_key( sanitize_text_field($_GET['key']) );
+						$order_id = wc_get_order_id_by_order_key( $_GET['key'] );
 					}
 				}
 				$order = new WC_Order( $order_id );
@@ -953,6 +953,10 @@ add_action( 'plugins_loaded', 'todopago_update_db_check' );
 
 function my_init() {
 
+	// comment out the next two lines to load the local copy of jQuery
+	wp_deregister_script( 'jquery' );
+	// wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', false, '1.3.2' );
+	wp_enqueue_script( 'jquery' );
 }
 
 // No eliminar esta linea, en el Readme se indica que esta linea debe  ser descomentada en el caso de tener conflictos con Jquery

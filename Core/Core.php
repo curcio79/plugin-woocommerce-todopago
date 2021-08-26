@@ -599,7 +599,7 @@ class Core {
 		$connector = new \TodoPago\Sdk( $http_header, $arrayOptions['ambiente'] );
 
 		//opciones para el método getStatus
-		$optionsGS = array( 'MERCHANT' => sanitize_text_field($_GET['merchant']), 'OPERATIONID' => sanitize_text_field($_GET['order_id']) );
+		$optionsGS = array( 'MERCHANT' => $_GET['merchant'], 'OPERATIONID' => $_GET['order_id'] );
 		$status    = $connector->getStatus( $optionsGS );
 
 		$rta      = '';
@@ -657,7 +657,7 @@ class Core {
 	}
 
 	public function get_credentials() {
-		if ( ( isset( sanitize_text_field($_POST['user']) ) && ! empty( sanitize_text_field($_POST['user']) ) ) && ( isset( sanitize_text_field($_POST['password']) ) && ! empty( sanitize_text_field($_POST['password']) ) ) ) {
+		if ( ( isset( $_POST['user'] ) && ! empty( $_POST['user'] ) ) && ( isset( $_POST['password'] ) && ! empty( $_POST['password'] ) ) ) {
 
 			if ( wp_verify_nonce( sanitize_text_field($_REQUEST['_wpnonce']), "getCredentials" ) == false ) {
 				$response = array(
@@ -676,7 +676,7 @@ class Core {
 
 			//ambiente developer por defecto
 			$mode = "test";
-			if ( sanitize_text_field($_POST['mode']) == "prod" ) {
+			if ( $_POST['mode'] == "prod" ) {
 				$mode = "prod";
 			}
 
