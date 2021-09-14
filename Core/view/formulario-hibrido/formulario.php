@@ -1,13 +1,6 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 $urlPath = dirname( plugins_url().'/'.plugin_basename( __FILE__ ) ).'/';
-
-
- 
-//$scripts->add( 'script-min', false, array( $urlPath . 'script-min.js' ) );
-
 
 wp_register_style('TPMP-flexbox', $urlPath.'/flexbox.css', array(), false, 'screen');
 wp_register_style('TPMP-form_todopago', $urlPath.'/form_todopago.css', array(), false, 'screen');
@@ -18,17 +11,13 @@ wp_enqueue_style('TPMP-flexbox');
 wp_enqueue_style('TPMP-form_todopago');
 wp_enqueue_style('TPMP-queries');
 
-
-
-
-
-//add_action( 'woocommerce_after_checkout_form', 'bbloomer_add_jscript_checkout');
+add_action( 'woocommerce_after_checkout_form', 'bbloomer_add_jscript_checkout');
  
-// function bbloomer_add_jscript_checkout() {
-// echo '<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>';
-// }
-echo esc_html('<script type="text/javascript" src="'.$urlPath.'/script-min.js"></script>') ;
+function bbloomer_add_jscript_checkout() {
+echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>');
+}
 ?>
+<script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
 
 
 <div class="progress">
@@ -39,7 +28,7 @@ echo esc_html('<script type="text/javascript" src="'.$urlPath.'/script-min.js"><
 <div class="tp_wrapper" id="tpForm">
     <section class="tp-total tp-flex">
         <div>
-            <strong>Total a pagar $<?php echo esc_html($amount); ?></strong>
+            <strong>Total a pagar $<?php echo $amount; ?></strong>
         </div>
         <!-- <div>
             Elegí tu forma de pago
@@ -81,7 +70,7 @@ echo esc_html('<script type="text/javascript" src="'.$urlPath.'/script-min.js"><
                 <label for="numeroTarjetaTxt" class="text_small">Número de Tarjeta</label>
                 <input id="numeroTarjetaTxt" class="tp_form_control" maxlength="19" title="Número de Tarjeta"
                        min-length="14" autocomplete="off">
-                <img src="<?php echo esc_html($form_dir); ?>/images/empty.png" id="tp-tarjeta-logo"
+                <img src="<?php echo $form_dir; ?>/images/empty.png" id="tp-tarjeta-logo"
                      alt=""/>
                 <!-- <span class="error" id="numeroTarjetaTxtError"></span> -->
                 <label id="numeroTarjetaLbl" class="tp-error"></label>
@@ -159,7 +148,7 @@ echo esc_html('<script type="text/javascript" src="'.$urlPath.'/script-min.js"><
                                 Para Amex, los 4 dígitos se encuentran en el frente de tu tarjeta. (der)
                             </p>
                             <img id="tp-cvv-helper-img" alt="ilustración tarjetas"
-                                 src="<?php echo esc_html($form_dir); ?>/images/clave-ej.png">
+                                 src="<?php echo $form_dir; ?>/images/clave-ej.png">
                         </div>
                     </div>
                 </div>
@@ -297,6 +286,11 @@ echo esc_html('<script type="text/javascript" src="'.$urlPath.'/script-min.js"><
             </div>
         </div>
     </section>
+    <div class="tp_row">
+        <div id="tp-powered">
+            Powered by <img id="tp-powered-img" src="<?php echo $form_dir; ?>/images/tp_logo_prod.png"/>
+        </div>
+    </div>
 </div>
 
 
