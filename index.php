@@ -64,7 +64,7 @@ function woocommerce_todopago_init() {
 
 		public function __construct() {
 			$this->id           = 'todopago';
-			$this->icon         = apply_filters( 'woocommerce_after_checkout_form', "http://www.todopago.com.ar/sites/todopago.com.ar/files/pluginstarjeta.jpg" );
+			$this->icon         = "https://todopago.com.ar/sites/all/themes/todopago_theme/logo.svg" ;
 			$this->method_title = 'Todo Pago';
 			$this->has_fields   = false;
 			$this->supports     = array(
@@ -78,9 +78,9 @@ function woocommerce_todopago_init() {
 			$this->init_settings(); //Carga en el array settings los valores de los campos persistidos de la base de datos
 			//Datos generales
 			$this->version           = $this->todopago_getValueOfArray( $this->settings, 'version' );
-			$this->title             = "Todo Pago";
+			$this->title             = "Pagá de manera simple y rápida. En cuotas con y sin interes";
 			$this->description       = Constantes::TODOPAGO_DESCRIPCION_TODOPAGO;
-			$this->method_description       = Constantes::TODOPAGO_DESCRIPCION_TODOPAGO;
+			$this->method_description       = Constantes::TODOPAGO_DESCRIPCION_TODOPAGO_TIENDA;
 
 			$this->ambiente          = $this->todopago_getValueOfArray( $this->settings, 'ambiente' );
 			$this->clean_carrito     = $this->todopago_getValueOfArray( $this->settings, 'clean_carrito' );
@@ -599,7 +599,7 @@ function woocommerce_todopago_init() {
 			if ( isset( $_GET['timeout'] ) && $_GET['timeout'] == "expired" ) {
 				$this->setOrderStatus( $order, 'estado_rechazo' );
 				//$this -> _printErrorMsg();
-				$redirect_url = add_query_arg( 'wc_error', urlencode( $_GET['error_message'] ), $order->get_cancel_order_url_raw() );
+				$redirect_url = add_query_arg( 'wc_error', esc_attr( $_GET['error_message'] ), $order->get_cancel_order_url_raw() );
 				$this->clean_cart( $woocommerce, $this->clean_carrito );
 				wp_redirect( $redirect_url );
 				exit;
@@ -607,7 +607,7 @@ function woocommerce_todopago_init() {
 			if ( isset( $_GET['Error'] ) ) {
 				$this->setOrderStatus( $order, 'estado_rechazo' );
 				//$this -> _printErrorMsg();
-				$redirect_url = add_query_arg( 'wc_error', urlencode( $_GET['Error'] ), $order->get_cancel_order_url_raw() );
+				$redirect_url = add_query_arg( 'wc_error', esc_attr( $_GET['Error'] ), $order->get_cancel_order_url_raw() );
 				$this->clean_cart( $woocommerce, $this->clean_carrito );
 				wp_redirect( $redirect_url );
 				exit;

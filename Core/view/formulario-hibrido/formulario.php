@@ -17,7 +17,7 @@ function bbloomer_add_jscript_checkout() {
 echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js"></script>');
 }
 ?>
-<script type="text/javascript" src="<?php echo "$form_dir/script-min.js"; ?>"></script>
+<script type="text/javascript" src="<?php echo esc_js("$form_dir/script-min.js"); ?>"></script>
 
 
 <div class="progress">
@@ -28,7 +28,7 @@ echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js">
 <div class="tp_wrapper" id="tpForm">
     <section class="tp-total tp-flex">
         <div>
-            <strong>Total a pagar $<?php echo $amount; ?></strong>
+            <strong>Total a pagar $<?php echo sanitize_text_field($amount); ?></strong>
         </div>
         <!-- <div>
             Elegí tu forma de pago
@@ -70,7 +70,7 @@ echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js">
                 <label for="numeroTarjetaTxt" class="text_small">Número de Tarjeta</label>
                 <input id="numeroTarjetaTxt" class="tp_form_control" maxlength="19" title="Número de Tarjeta"
                        min-length="14" autocomplete="off">
-                <img src="<?php echo $form_dir; ?>/images/empty.png" id="tp-tarjeta-logo"
+                <img src="<?php echo sanitize_text_field($form_dir); ?>/images/empty.png" id="tp-tarjeta-logo"
                      alt=""/>
                 <!-- <span class="error" id="numeroTarjetaTxtError"></span> -->
                 <label id="numeroTarjetaLbl" class="tp-error"></label>
@@ -148,7 +148,7 @@ echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js">
                                 Para Amex, los 4 dígitos se encuentran en el frente de tu tarjeta. (der)
                             </p>
                             <img id="tp-cvv-helper-img" alt="ilustración tarjetas"
-                                 src="<?php echo $form_dir; ?>/images/clave-ej.png">
+                                 src="<?php echo sanitize_text_field($form_dir); ?>/images/clave-ej.png">
                         </div>
                     </div>
                 </div>
@@ -288,7 +288,7 @@ echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js">
     </section>
     <div class="tp_row">
         <div id="tp-powered">
-            Powered by <img id="tp-powered-img" src="<?php echo $form_dir; ?>/images/tp_logo_prod.png"/>
+            <img id="tp-powered-img" src="<?php echo $form_dir; ?>/images/tp_logo_prod.png"/>
         </div>
     </div>
 </div>
@@ -296,13 +296,13 @@ echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js">
 
 <script language="javascript">
     var tpformJquery = $.noConflict();
-    var urlScript = "<?php echo $env_url; ?>";
+    var urlScript = "<?php echo esc_js($env_url); ?>";
     //securityRequesKey, esta se obtiene de la respuesta del SAR
-    var urlSuccess = "<?php echo $return_URL_SUCCESS ?>";
-    var urlError = "<?php echo $return_URL_ERROR?>";
-    var security = "<?php echo $responseSAR->PublicRequestKey; ?>";
-    var mail = "<?php echo $email; ?>";
-    var completeName = "<?php echo $nombre_completo; ?>";
+    var urlSuccess = "<?php echo esc_js($return_URL_SUCCESS); ?>";
+    var urlError = "<?php echo esc_js($return_URL_ERROR); ?>";
+    var security = "<?php echo esc_js($responseSAR->PublicRequestKey); ?>";
+    var mail = "<?php echo esc_js($email); ?>";
+    var completeName = "<?php echo esc_js($nombre_completo); ?>";
     var defDniType = 'DNI';
     var medioDePago = document.getElementById('medioPagoCbx');
     var tarjetaLogo = document.getElementById('tp-tarjeta-logo');
@@ -310,14 +310,14 @@ echo esc_html('<script type="text/javascript" src="'.$form_dir.'/script-min.js">
     var numeroTarjetaTxt = document.getElementById('numeroTarjetaTxt')
     var btnBilletera = document.getElementById('btn_billetera');
     var todoPagoSection = document.getElementById('tp-tarjetas');
-    var poweredLogoUrl = "<?php echo $form_dir;?>/images/";
-    var emptyImg = "<?php echo $form_dir;?>/images/empty.png";
+    var poweredLogoUrl = "<?php echo esc_js($form_dir);?>/images/";
+    var emptyImg = "<?php echo esc_js($form_dir);?>/images/empty.png";
     var peiCbx = tpformJquery("#peiCbx");
     var switchPei = tpformJquery("#switch-pei");
     var sliderText = tpformJquery("#slider-text");
     var helperCaller = tpformJquery("#tp-cvv-caller");
     var helperPopover = tpformJquery("#tp-cvv-helper");
-    var tipoDePago = "<?php echo $paymentMethod; ?>"
+    var tipoDePago = "<?php echo esc_js($paymentMethod); ?>"
 
 
 </script>

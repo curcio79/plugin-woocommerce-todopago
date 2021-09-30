@@ -599,7 +599,7 @@ class Core {
 		$connector = new \TodoPago\Sdk( $http_header, $arrayOptions['ambiente'] );
 
 		//opciones para el método getStatus
-		$optionsGS = array( 'MERCHANT' => $_GET['merchant'], 'OPERATIONID' => $_GET['order_id'] );
+		$optionsGS = array( 'MERCHANT' => sanitize_text_field($_GET['merchant']), 'OPERATIONID' => sanitize_text_field($_GET['order_id']) );
 		$status    = $connector->getStatus( $optionsGS );
 
 		$rta      = '';

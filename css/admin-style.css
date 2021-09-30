@@ -31,3 +31,15 @@
     color: #EA3297;
     background-image: url(https://todopago.com.ar/sites/todopago.com.ar/files/billetera/pluginstarjeta3.jpg)
 }
+payment_box {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    margin: 0px;
+    font-size: .92em;
+    border-radius: 2px;
+    line-height: 1.5;
+    background-color: #dfdcde;
+    color: #515151;
+}
