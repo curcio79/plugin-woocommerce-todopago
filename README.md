@@ -1,23 +1,25 @@
 <a name="inicio"></a>
 # Todo Pago - Módulo para WooCommerce
-### Versión 1.14.0
+### Versión 1.15.0
 
 Plug in para la integración con gateway de pago <strong>Todo Pago</strong>
-+ [Consideraciones Generales](#consideracionesgenerales)
-+ [Instalación](#instalacion)
-+ [Configuración](#configuracion)
-   + [Activación](#activacion)
-   + [Configuración plug in](#confplugin)
-   + [Formulario Hibrido](#formHibrido)
-   + [Obtener datos de configuracion](#getcredentials)
-   + [Configuración de Maximo de Cuotas](#maxcuotas)
-+ [Prevencion de Fraude](#cybersource)
-   + [Consideraciones generales](#cons_generales)
-   + [Consideraciones para vertical retail](#cons_retail)
-   + [Datos adiccionales para prevención de fraude](#prevfraudedatosadicionales) 
-+ [Características](#features) 
-  + [Consulta de transacciones](#constrans)
-  + [Devoluciones](#devoluciones)
+- [Todo Pago - Módulo para WooCommerce](#todo-pago---módulo-para-woocommerce)
+    - [Versión 1.15.0](#versión-1150)
+  - [Consideraciones Generales](#consideraciones-generales)
+  - [Instalación](#instalación)
+  - [Configuración](#configuración)
+      - [Activación](#activación)
+      - [Configuración plug in](#configuración-plug-in)
+      - [Formulario Hibrido](#formulario-hibrido)
+      - [Obtener datos de configuración](#obtener-datos-de-configuración)
+      - [Configuración de Máximo de Cuotas](#configuración-de-máximo-de-cuotas)
+  - [Prevención de Fraude](#prevención-de-fraude)
+      - [Consideraciones Generales (para todas las verticales, por defecto RETAIL)](#consideraciones-generales-para-todas-las-verticales-por-defecto-retail)
+      - [Consideraciones para vertical RETAIL](#consideraciones-para-vertical-retail)
+      - [Nuevos Atributos en los productos](#nuevos-atributos-en-los-productos)
+  - [Características](#características)
+      - [Consulta de Transacciones](#consulta-de-transacciones)
+      - [Devoluciones](#devoluciones)
 
 <a name="consideracionesgenerales"></a>
 ## Consideraciones Generales

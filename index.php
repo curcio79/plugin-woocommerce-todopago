@@ -2,7 +2,7 @@
 /*
     Plugin Name: TodoPago para WooCommerce
     Description: Configure las opciones de pago y acepte pagos con tarjetas sin costo fijo. Cobrás Fácil y Seguro. Vendé con Planes Ahora. Sólo Pagás cuando lo Usás.
-    Version: 1.14.0
+    Version: 1.15.0
     Author: Todo Pago  
 */
 
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-define( 'TODOPAGO_PLUGIN_VERSION', '1.14.0' );
+define( 'TODOPAGO_PLUGIN_VERSION', '1.15.0' );
 define( 'TPMP_FORM_EXTERNO', 'externo' );
 define( 'TPMP_FORM_HIBRIDO', 'hibrido' );
 
