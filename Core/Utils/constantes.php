@@ -29,7 +29,7 @@ class Constantes
     const TODOPAGO_BANNER_1 = 'https://todopago.com.ar/sites/todopago.com.ar/files/billetera/pluginstarjeta1.jpg';
 	const TODOPAGO_BANNER_2 = 'https://todopago.com.ar/sites/todopago.com.ar/files/billetera/pluginstarjeta2.jpg';
 	const TODOPAGO_BANNER_3 = 'https://todopago.com.ar/sites/todopago.com.ar/files/billetera/pluginstarjeta3.jpg';
-	const TODOPAGO_DESCRIPCION_TODOPAGO = 'Configure las opciones de pago y acepte pagos con tarjetas sin costo fijo. Cobrás Fácil y Seguro. Vendé con Planes Ahora. Sólo Pagás cuando lo Usás. Solo para la República Argentina';
+	//const TODOPAGO_DESCRIPCION_TODOPAGO = 'Configure las opciones de pago y acepte pagos con tarjetas sin costo fijo. Cobrás Fácil y Seguro. Vendé con Planes Ahora. Sólo Pagás cuando lo Usás. Solo para la República Argentina';
     const TODOPAGO_DESCRIPCION_TODOPAGO = '<div ><h2><strong>FANS</strong> DE LA PRACTICIDAD</h2><div>
     <span style="color:rgb(218, 22, 123)">•&nbsp;</span>Podés pagar con tarjetas de todos los bancos
     </div>
